@@ -28,24 +28,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         controller: widget.controller,
         obscureText: widget.isPass ? isSecure : false,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(16),
-          label: Text(widget.labeText),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-          prefixIcon: Icon(widget.icon),
-          suffix: widget.isPass
-              ? IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    setState(() {
-                      isSecure = !isSecure;
-                    });
-                  },
-                  icon: Icon(isSecure ? Iconsax.eye : Iconsax.eye_slash),
-                )
-              : null,
-        ),
+            contentPadding: const EdgeInsets.all(16),
+            label: Text(widget.labeText),
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            prefixIcon: Icon(widget.icon),
+            suffix: widget.isPass
+                ? GestureDetector(
+                    onTap: () => setState(() => isSecure = !isSecure),
+                    child: Icon(
+                      isSecure ? Iconsax.eye : Iconsax.eye_slash,
+                    ),
+                  )
+                : null),
       ),
     );
   }

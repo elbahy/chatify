@@ -36,6 +36,45 @@ class LoginView extends StatelessWidget {
               labeText: 'Password',
               icon: Iconsax.password_check,
               isPass: true,
+            ),
+            const SizedBox(height: 12),
+            Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {},
+                child: const Text('Forget Password?'),
+              ),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColor.kprimaryColor,
+                foregroundColor: Colors.black,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                padding: const EdgeInsets.all(16),
+              ),
+              child: Center(
+                child: Text('Login'.toUpperCase()),
+              ),
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.onBackground,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                padding: const EdgeInsets.all(16),
+              ),
+              child: Center(
+                child: Text('Create Account'.toUpperCase()),
+              ),
             )
           ],
         ),
