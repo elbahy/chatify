@@ -1,4 +1,5 @@
 import 'package:chatify/core/utils/app_color.dart';
+import 'package:chatify/features/auth/cubit/auth_cubit.dart';
 import 'package:chatify/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,6 +14,7 @@ class LoginFormWidget extends StatelessWidget {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passController = TextEditingController();
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return Form(
       key: formKey,
       child: Column(
@@ -41,7 +43,11 @@ class LoginFormWidget extends StatelessWidget {
           const SizedBox(height: 30),
           ElevatedButton(
             onPressed: () {
-              if (formKey.currentState!.validate()) {}
+              if (formKey.currentState!.validate()) {
+                AuthCubit.get(context).emailAddress = emailController.text;
+                AuthCubit.get(context).password = passController.text;
+                AuthCubit.get(context).login();
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColor.kprimaryColor,
